@@ -130,7 +130,7 @@ void deleteStudent(std::vector<Student>& students)
 
 	int index = getIndexOf(students, id);
 
-	if (index != -1)
+	if (index == -1)
 	{
 		std::cout << "Sorry no student found for ID " << id << "." << std::endl;
 	}
