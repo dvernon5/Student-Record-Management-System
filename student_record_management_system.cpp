@@ -53,8 +53,7 @@ int getIndexOf(std::vector<Student>& students, int id)
 		}
 	}
 
-	return index;
-			
+	return index;			
 }
 
 void addStudent(std::vector<Student>& students)
