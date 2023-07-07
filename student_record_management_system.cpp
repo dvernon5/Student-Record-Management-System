@@ -19,19 +19,61 @@ Class Student
 	private:
 		int id;
 		std::string name;
-}
+};
 
+vector<Student> readFile(std::string filename);
 int getIndexOf(std::vector<Student>&, int);
 void addStudent(std::vector<Student>&);
 void modifyStudent(std::vector<Student>&);
 void deleteStudent(std::vector<Student>&);
-void writeToFile(std::vector<Student>&, string);
 void displayStudents(std::vector<Student>&);
+void writeToFile(std::vector<Student>&, string);
 void displayMenu();
 
 int main()
 {
-	
+	vector<Student> students;
+	int selection = 0;
+
+	do
+	{
+		displayMenu();
+		std::cin >> selection;
+		std::cin.ignore();
+
+		switch(selection)
+		{
+			case 1:
+				std::cout << "\nADD STUDENT: \n----------\n";
+				addStudent(students);
+				break;
+			
+			case 2:
+				std::cout << "\nMODIFY STUDENT: \n-----------------\n";
+				modifyStudent(students);
+				break;
+
+			case 3:
+				std::cout << "\nDELETE STUDENT: \n----------------\n";
+				deleteStudent(students);
+				break;
+
+			case 4:
+				std::cout << "\nLIST ALL STUDENTS: \n---------------\n";
+				displayStudents(students);
+				break;
+
+			case 5:
+				std::cout << "\nThank you... goodbye!\n";
+				break;
+
+			default:
+				std::cout << "\nInvalid selection\n";
+				break;
+		}
+	} while (selection != 5);
+
+	return 0;
 }
 
 std::string::Student::toString()
@@ -43,6 +85,37 @@ std::string::Student::toString()
 	return ss.str();
 }
 
+std::vector<Student> readFile(std::string filename)
+{
+	vector<Student> students;
+	std::ifstream inFile(filename.c_str());  // infile.open(filename.c_str());
+	std::string line = "";
+
+	if (!inFile.is_open())
+	{
+		std::cout << "ERROR in opening file " << filename << "!\nExiting..";
+		exit(EXIT_FAILURE);
+	}
+
+	while (getline(inFile, line))
+	{
+		std::stringstream ss(line);
+		std::vector<std::string> tokens;
+		std::string token;
+
+		while (getline(ss, token, ','))
+		{
+			tokens.push_back(token);
+		}
+
+		int id = stod(tokens[0]);
+		std::string name = tokens[1];
+		students.push_back(Student(id, name));
+	}
+
+	inFile.close();
+	return students;
+}
 int getIndexOf(std::vector<Student>& students, int id)
 {
 	int index = -1;
