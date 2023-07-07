@@ -1,4 +1,6 @@
 #include <iostream>
+#include <fstream>
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -11,9 +13,39 @@ Class Student
 		int getName() { return name; }
 		void setName(std::string name) { this->name = name; }
 
-		void toString();
+		std::string toString();
 
 	private:
 		int id;
 		std::string name;
 }
+
+int main()
+{
+	
+}
+
+std::string::Student::toString()
+{
+	std::stringstream ss;
+
+	ss << id << "," << name;
+
+	return ss.str();
+}
+
+void writeToFile(vector<Student> students, string filename)
+{
+	std::ofstream outFile(filename.c_str());
+
+	if (!outFile.is_open())
+	{
+		std::cout << "Error 
+	}
+
+	for (auto student : students)
+	{
+		outFile << student.toString() << std::endl;
+	}
+}
+
