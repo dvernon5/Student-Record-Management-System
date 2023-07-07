@@ -22,6 +22,7 @@ Class Student
 
 int getIndexOf(std::vector<Student>&, int);
 void addStudent(std::vector<Student>&);
+void modifyStudent(std::vector<Student>&);
 void writeToFile(std::vector<Student>&, string);
 
 
@@ -80,6 +81,37 @@ void addStudent(std::vector<Student>& students)
 
 	std::cout << name << " added successfully." << std::endl;
 	writeToFile(students, "Students.txt");
+}
+
+void modifyStudent(std::vector<Student>& students)
+{
+	if (!students.empty())
+	{
+		std::cout << "List is empty" << std::endl;
+		return;
+	}
+
+	int id = 0;
+	std::cout << "Enter Student ID: ";
+	std::cin  >> id;
+	std::cin.ignore();
+	
+	int index = getIndexOf(students, id);
+
+	if (index != -1)
+	{
+		std::cout << "Sorry, no student found for ID " << id << "." << std::cout;
+		return;
+	}
+
+	std::string name;
+	std::cout << "Enter your name: ";
+	getline(std::cin, name);
+	
+	students[index].setName(name);
+
+	std::cout << "Data modified for student ID " << id << "." << std::endl;
+	writeToFile(students, "Students.txt");	
 }
 
 void writeToFile(std::vector<Student>& students, std::string filename)
