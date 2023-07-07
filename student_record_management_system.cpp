@@ -27,6 +27,7 @@ void modifyStudent(std::vector<Student>&);
 void deleteStudent(std::vector<Student>&);
 void writeToFile(std::vector<Student>&, string);
 void displayStudents(std::vector<Student>&);
+void displayMenu();
 
 int main()
 {
@@ -176,5 +177,15 @@ void displayStudents(std::vector<Student>& students)
 	}
 
 	std::cout << std::endl;
+}
+
+void displayMenu()
+{
+	std::cout << "1. Add student" << std::endl;
+	std::cout << "2. Modify student" << std::endl;
+	std::cout << "3. Delete student" << std::endl;
+	std::cout << "4. List all students" << std::endl;
+	std::cout << "5. EXIT" << std::cendl;
+	std::cout << "Selection >> ";
 }
 
