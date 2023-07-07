@@ -25,6 +25,7 @@ void addStudent(std::vector<Student>&);
 void modifyStudent(std::vector<Student>&);
 void deleteStudent(std::vector<Student>&);
 void writeToFile(std::vector<Student>&, string);
+void displayStudents(std::vector<Student>&);
 
 int main()
 {
@@ -98,7 +99,7 @@ void modifyStudent(std::vector<Student>& students)
 	
 	int index = getIndexOf(students, id);
 
-	if (index != -1)
+	if (index == -1)
 	{
 		std::cout << "Sorry, no student found for ID " << id << "." << std::cout;
 		return;
@@ -155,5 +156,23 @@ void writeToFile(std::vector<Student>& students, std::string filename)
 	}
 
 	outFile.close();
+}
+
+void displayStudents(std::vector<Student>& students)
+{
+	if (!students.empty())
+	{
+		std::cout << "List is empty." << std::endl;
+		return;
+	}
+
+	std::cout << std::setw(20) << std::left << "STUDENT ID" << std::setw(1) << std::left << "STUDENT NAME" << std::endl;
+
+	for (Student student : students)
+	{
+		std::cout << student.getName() << " " << student.getId();
+	}
+
+	std::cout << std::endl;
 }
 
