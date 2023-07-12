@@ -3,20 +3,19 @@
 #include <sstream>
 #include <string>
 #include <map>
+#include <vector>
 #include <iomanip>
 
 class Student
 {
     public:
         Student() = default;
-        Student(int id, std::string name) : id(id), name(name) {}
-        int getId() { return  id; }
+        Student(std::string name) : name(name) {}
         std::string getName() { return name; }
         void setName(std::string name) { this->name = name; }
         std::string toString();
     
     private:
-        int id;
         std::string name;
 };
 
@@ -84,9 +83,9 @@ std::string Student::toString()
     return ss.str();
 }
 
-std::vector<Student> readFile(std::string filename)
+std::map<int,Student> readFile(std::string filename)
 {
-    std::vector<Student> students;
+    std::map<int, Student> students;
     std::ifstream inFile(filename.c_str());  /* inFile.open(filename.cstr()); */
     std::string line = "";
     
@@ -109,7 +108,7 @@ std::vector<Student> readFile(std::string filename)
         
         int id = stod(tokens[0]);
         std::string name = tokens[1];
-        students.push_back(Student(id, name));
+        students[id] = Student(name);
     }
     
     inFile.close();
