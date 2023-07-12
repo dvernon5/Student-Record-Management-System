@@ -232,7 +232,7 @@ void displayStudents(std::map<int, Student>& students)
     std::cout << std::endl;
 }
 
-void writeToFile(std::vector<Student>& students, std::string filename)
+void writeToFile(std::map<int, Student>& students, std::string filename)
 {
     std::ofstream outFile(filename.c_str());
     
@@ -242,9 +242,9 @@ void writeToFile(std::vector<Student>& students, std::string filename)
         exit(EXIT_FAILURE);
     }
     
-    for (auto student: students)
+    for (auto& student: students)
     {
-        outFile << student.toString() << std::endl;
+        outFile << student.first << "," << student.second.toString() << std::endl;
     }
     
     outFile.close();
