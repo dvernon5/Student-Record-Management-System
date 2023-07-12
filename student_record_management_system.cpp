@@ -155,7 +155,7 @@ void addStudent(std::vector<Student>& students)
     writeToFile(students, "Student.txt");
 }
 
-void modifyStudent(std::vector<Student>& students)
+void modifyStudent(std::map<int, Student>& students)
 {
     if (students.empty())
     {
