@@ -31,7 +31,7 @@ void displayMenu();
 
 int main(void)
 {
-    std::vector<Student> students = readFile("Students.txt");
+    std::map<int, Student> students = readFile("Students.txt");
     int selection = 0;
     
     do
