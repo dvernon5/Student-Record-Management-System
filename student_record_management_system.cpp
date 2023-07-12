@@ -79,7 +79,7 @@ std::string Student::toString()
 {
     std::stringstream ss;
     
-    ss << id << "," << name;
+    ss << name;
     
     return ss.str();
 }
