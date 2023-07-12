@@ -149,7 +149,7 @@ void addStudent(std::vector<Student>& students)
     std::cout << "Enter your name: ";
     getline(std::cin, name);
     
-    students.push_back(Student(id, name));
+    students[id] = Student(name);
     
     std::cout << name << " added sucessfully." << std::endl;
     writeToFile(students, "Student.txt");
