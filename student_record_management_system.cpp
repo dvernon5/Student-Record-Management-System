@@ -2,7 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
-#include <vector>
+#include <map>
 #include <iomanip>
 
 class Student
@@ -20,13 +20,13 @@ class Student
         std::string name;
 };
 
-std::vector<Student> readFile(std::string);
-int  getIndexOf(std::vector<Student>&, int);
-void addStudent(std::vector<Student>&);
-void modifyStudent(std::vector<Student>&);
-void deleteStudent(std::vector<Student>&);
-void displayStudents(std::vector<Student>&);
-void writeToFile(std::vector<Student>&, std::string);
+std::map<int, Student> readFile(std::string);
+int  getIndexOf(std::map<int, Student>&, int);
+void addStudent(std::map<int, Student>&);
+void modifyStudent(std::map<int, Student>&);
+void deleteStudent(std::map<int, Student>&);
+void displayStudents(std::map<int, Student>&);
+void writeToFile(std::map<int, Student>&, std::string);
 void displayMenu();
 
 int main(void)
@@ -87,7 +87,7 @@ std::string Student::toString()
 std::vector<Student> readFile(std::string filename)
 {
     std::vector<Student> students;
-    std::ifstream inFile(filename.c_str());  // inFile.open(filename.cstr());
+    std::ifstream inFile(filename.c_str());  /* inFile.open(filename.cstr()); */
     std::string line = "";
     
     if (!inFile.is_open())
@@ -126,7 +126,7 @@ int getIndexOf(std::vector<Student>& students, int id)
     {
         if (itr->getId() == id)
         {
-            index = (int)std::distance(students.begin(), itr);  // itr - students.begin();
+            index = (int)std::distance(students.begin(), itr);  /* itr - students.begin(); */
             break;
         }
     }
