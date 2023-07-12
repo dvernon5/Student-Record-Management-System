@@ -213,7 +213,7 @@ void deleteStudent(std::vector<Student>& students)
     
 }
 
-void displayStudents(std::vector<Student>& students)
+void displayStudents(std::map<int, Student>& students)
 {
     if (students.empty())
     {
@@ -224,9 +224,9 @@ void displayStudents(std::vector<Student>& students)
     std::cout << std::setw(20) << std::left << "STUDENT ID" << std::setw(1) << std::left << "STUDENT NAME" << std::endl;
     std::cout << std::setw(20) << std::left << "-----------" << std::setw(1) << std::left << "--------------" << std::endl;
 
-    for (Student student : students)
+    for (auto& student : students)
     {
-        std::cout << std::setw(20) << std::left << student.getId() << std::setw(1) << std::left << student.getName() << std::endl;
+        std::cout << std::setw(20) << std::left << student.first << std::setw(1) << std::left << student.second.getName() << std::endl;
     }
 
     std::cout << std::endl;
