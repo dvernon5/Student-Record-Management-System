@@ -72,7 +72,7 @@ int main(void)
     } while (selection != 5);
     
     return 0;
-}  /* End of Program */
+}
 
 std::string Student::toString()
 {
@@ -83,10 +83,10 @@ std::string Student::toString()
     return ss.str();
 }
 
-std::map<int,Student> readFile(std::string filename)
+std::map<int, Student> readFile(std::string filename)
 {
     std::map<int, Student> students;
-    std::ifstream inFile(filename.c_str());  /* inFile.open(filename.cstr()); */
+    std::ifstream inFile(filename.c_str());  // inFile.open(filename.cstr());
     std::string line = "";
     
     if (!inFile.is_open())
@@ -120,7 +120,7 @@ int getIndexOf(std::map<int, Student>& students, int id)
 {
     auto index = -1;
     auto itr = students.find(id);
-
+    
     if (itr != students.end())
     {
         index = itr->first;
@@ -129,7 +129,7 @@ int getIndexOf(std::map<int, Student>& students, int id)
     return index;
 }
 
-void addStudent(std::vector<Student>& students)
+void addStudent(std::map<int, Student>& students)
 {
     int id;
     std::cout << "Enter student ID: ";
@@ -168,9 +168,9 @@ void modifyStudent(std::map<int, Student>& students)
     std::cin  >> id;
     std::cin.ignore();
     
-    int index = getIndexOf(students, id);
+    int studentID = getIndexOf(students, id);
     
-    if (index == -1)
+    if (studentID == -1)
     {
         // student not found
         std::cout << "Sorry, no student found for ID " << id << "." << std::endl;
@@ -180,13 +180,13 @@ void modifyStudent(std::map<int, Student>& students)
     std::string name;
     std::cout << "Enter your name: ";
     getline(std::cin, name);
-    students[index].setName(name);
+    students[studentID].setName(name);
     
     std::cout << "Data modified for student ID " << id << "." << std::endl;
     writeToFile(students, "Students.txt");
 }
 
-void deleteStudent(std::vector<Student>& students)
+void deleteStudent(std::map<int, Student>& students)
 {
     if (students.empty())
     {
