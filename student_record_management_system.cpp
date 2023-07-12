@@ -116,18 +116,14 @@ std::map<int,Student> readFile(std::string filename)
     return students;
 }
 
-int getIndexOf(std::vector<Student>& students, int id)
+int getIndexOf(std::map<int, Student>& students, int id)
 {
-    int index = -1;
-    std::vector<Student>::iterator itr;
-    
-    for (itr = students.begin(); itr != students.end(); ++itr)
+    auto index = -1;
+    auto itr = students.find(id);
+
+    if (itr != students.end())
     {
-        if (itr->getId() == id)
-        {
-            index = (int)std::distance(students.begin(), itr);  /* itr - students.begin(); */
-            break;
-        }
+        index = itr->first;
     }
     
     return index;
