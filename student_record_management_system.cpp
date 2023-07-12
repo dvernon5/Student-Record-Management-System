@@ -199,14 +199,14 @@ void deleteStudent(std::vector<Student>& students)
     std::cin  >> id;
     std::cin.ignore();
     
-    int index = getIndexOf(students, id);
+    int studentID = getIndexOf(students, id);
     
-    if (index == -1)
+    if (studentID == -1)
     {
         std::cout << "Sorry, no student found for ID " << id << "." << std::endl;
     }
     
-    students.erase(students.begin() + index);
+    students.erase(studentID);
     
     std::cout << "Student ID " << id << " deleted successfully." << std::endl;
     writeToFile(students, "Students.txt");
