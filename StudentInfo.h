@@ -3,7 +3,6 @@ class StudentInfo {
     StudentInfo(std::string f_name = "", std::string l_name = "");
     std::string GetFirstName() const;
     std::string GetLastName() const;
-    int GetStudentId();
   
   private:
     Student students;
