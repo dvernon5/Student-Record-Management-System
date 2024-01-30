@@ -1,8 +1,8 @@
-#include "StudentManagement.h"
+#include "StudentManagementSystem.h"
 
 int main(int argc, const char * argv[]) {
-  StudentManagement student3;
-  student3.LaunchStudentManagement();
+  // Create a object that launch the student management system from the constructor.
+  StudentManagementSystem sys;
   
   return EXIT_SUCCESS;
 }
