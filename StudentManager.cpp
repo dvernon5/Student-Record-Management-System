@@ -1,5 +1,15 @@
 #include "StudentManager.h"
 
+void StudentManager::PrintStudentMenu() {
+  std::cout << "\nWelcome to the Student Management System\n";
+  std::cout << "1. Add Student.\n";
+  std::cout << "2. Modify Student.\n";
+  std::cout << "3. Delete Student.\n";
+  std::cout << "4. List Student.\n";
+  std::cout << "5. EXIT\n";
+  std::cout << "Your Selection >> ";
+}
+
 StudentInfoMap StudentManager::InsertStudent(StudentInfoMap& students, FileReference& filename) {
   student.id_num = user_input.GetStudentIdInput();
   if (verify.IsValidId(students, student.id_num)) {
