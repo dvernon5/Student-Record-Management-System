@@ -6,6 +6,7 @@
 typedef std::pair<int, StudentInfo> StudentPair;
 class StudentManager {
   public:
+    void PrintStudentMenu();
     void PrintStudents(StudentInfoMap& students);
     StudentInfoMap InsertStudent(StudentInfoMap& students, FileReference& filename);
     StudentInfoMap ModifyStudent(StudentInfoMap& students, FileReference& filename);
